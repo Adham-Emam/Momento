@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /search/
+Disallow: /?s=
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /logs/
+Allow: /wp-content/uploads/
+
+Sitemap: https://momento-teal.vercel.app/

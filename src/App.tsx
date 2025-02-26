@@ -34,24 +34,28 @@ function App() {
               <a
                 href="#home"
                 className="text-gray-300 hover:text-indigo-400 transition"
+                aria-label="Home"
               >
                 Home
               </a>
               <a
                 href="#about"
                 className="text-gray-300 hover:text-indigo-400 transition"
+                aria-label="About"
               >
                 About
               </a>
               <a
                 href="#projects"
                 className="text-gray-300 hover:text-indigo-400 transition"
+                aria-label="Projects"
               >
                 Projects
               </a>
               <a
                 href="#contact"
                 className="gradient-bg text-white px-4 py-2 rounded-md hover:opacity-90 transition"
+                aria-label="Contact"
               >
                 Contact Us
               </a>
@@ -62,6 +66,7 @@ function App() {
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="text-gray-300 hover:text-indigo-400"
+                aria-label="Toggle menu"
               >
                 {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
@@ -76,24 +81,28 @@ function App() {
               <a
                 href="#home"
                 className="block px-3 py-2 text-gray-300 hover:text-indigo-400"
+                aria-label="Home"
               >
                 Home
               </a>
               <a
                 href="#about"
                 className="block px-3 py-2 text-gray-300 hover:text-indigo-400"
+                aria-label="About"
               >
                 About
               </a>
               <a
                 href="#projects"
                 className="block px-3 py-2 text-gray-300 hover:text-indigo-400"
+                aria-label="Projects"
               >
                 Projects
               </a>
               <a
                 href="#contact"
                 className="block px-3 py-2 text-gray-300 hover:text-indigo-400"
+                aria-label="Contact"
               >
                 Contact
               </a>
@@ -146,6 +155,7 @@ function App() {
                   <a
                     href="#contact"
                     className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white gradient-bg hover:opacity-90 md:py-4 md:text-lg md:px-10"
+                    aria-label="Contact"
                   >
                     Start Your Journey
                     <ArrowRight className="ml-2" size={20} />
@@ -376,6 +386,7 @@ function App() {
                   <button
                     type="submit"
                     className="w-full flex justify-center py-3 px-4 rounded-md shadow-sm text-sm font-medium text-white gradient-bg hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    aria-label="Send Message"
                   >
                     Send Message
                   </button>
@@ -399,16 +410,32 @@ function App() {
                 </span>
               </div>
               <div className="flex space-x-6">
-                <a href="#" className="text-gray-400 hover:text-indigo-400">
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-indigo-400"
+                  aria-label="Facebook"
+                >
                   <Facebook className="h-6 w-6" />
                 </a>
-                <a href="#" className="text-gray-400 hover:text-indigo-400">
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-indigo-400"
+                  aria-label="Twitter"
+                >
                   <Twitter className="h-6 w-6" />
                 </a>
-                <a href="#" className="text-gray-400 hover:text-indigo-400">
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-indigo-400"
+                  aria-label="Instagram"
+                >
                   <Instagram className="h-6 w-6" />
                 </a>
-                <a href="#" className="text-gray-400 hover:text-indigo-400">
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-indigo-400"
+                  aria-label="Linkedin"
+                >
                   <Linkedin className="h-6 w-6" />
                 </a>
               </div>
@@ -426,16 +453,32 @@ function App() {
               Momento
             </div>
             <div className="flex space-x-6">
-              <a href="#" className="text-gray-400 hover:text-indigo-400">
+              <a
+                href="#"
+                className="text-gray-400 hover:text-indigo-400"
+                aria-label="Facebook"
+              >
                 <Facebook className="h-6 w-6" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-indigo-400">
+              <a
+                href="#"
+                className="text-gray-400 hover:text-indigo-400"
+                aria-label="Twitter"
+              >
                 <Twitter className="h-6 w-6" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-indigo-400">
+              <a
+                href="#"
+                className="text-gray-400 hover:text-indigo-400"
+                aria-label="Instagram"
+              >
                 <Instagram className="h-6 w-6" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-indigo-400">
+              <a
+                href="#"
+                className="text-gray-400 hover:text-indigo-400"
+                aria-label="Linkedin"
+              >
                 <Linkedin className="h-6 w-6" />
               </a>
             </div>
