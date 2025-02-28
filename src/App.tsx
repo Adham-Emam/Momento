@@ -1,4 +1,6 @@
 import React from "react";
+import Typed from "typed.js";
+
 import {
   Menu,
   X,
@@ -16,11 +18,35 @@ import { useState } from "react";
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Create reference to store the DOM element containing the animation
+  const el = React.useRef(null);
+
+  React.useEffect(() => {
+    const typed = new Typed(el.current, {
+      strings: [
+        "Moments that Inspire",
+        "Success for Your Brand",
+        "Connections that Last",
+        "Magic for Your Vision",
+        "Impact that Matters",
+      ],
+      typeSpeed: 50,
+      backSpeed: 50,
+      backDelay: 2000,
+      loop: true,
+    });
+
+    return () => {
+      // Destroy Typed instance during cleanup to stop animation
+      typed.destroy();
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-dark text-white">
       {/* Navigation */}
-      <nav className="fixed w-full bg-dark/90 backdrop-blur-sm z-50 border-b border-dark-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav className="fixed w-full bg-dark/90 backdrop-blur-sm z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-50 border-b border-dark-border">
           <div className="flex justify-between h-16 items-center">
             <div className="flex-shrink-0 flex items-center">
               <img src="./logo.webp" alt="Logo" className="h-10 mr-2" />
@@ -54,7 +80,7 @@ function App() {
               </a>
               <a
                 href="#contact"
-                className="gradient-bg text-white px-4 py-2 rounded-md hover:opacity-90 transition"
+                className="gradient-bg text-white px-4 py-2 rounded-md hover:opacity-90 duration-300"
                 aria-label="Contact"
               >
                 Contact Us
@@ -75,40 +101,52 @@ function App() {
         </div>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-dark-lighter border-b border-dark-border">
-              <a
-                href="#home"
-                className="block px-3 py-2 text-gray-300 hover:text-indigo-400"
-                aria-label="Home"
-              >
-                Home
-              </a>
-              <a
-                href="#about"
-                className="block px-3 py-2 text-gray-300 hover:text-indigo-400"
-                aria-label="About"
-              >
-                About
-              </a>
-              <a
-                href="#projects"
-                className="block px-3 py-2 text-gray-300 hover:text-indigo-400"
-                aria-label="Projects"
-              >
-                Projects
-              </a>
-              <a
-                href="#contact"
-                className="block px-3 py-2 text-gray-300 hover:text-indigo-400"
-                aria-label="Contact"
-              >
-                Contact
-              </a>
-            </div>
+        {/* {isMenuOpen && ( */}
+        <div className="md:hidden">
+          <div
+            className={`fixed w-full h-screen inset-0 bg-black z-0 cursor-pointer duration-300  ${
+              isMenuOpen
+                ? "opacity-50 pointer-events-auto"
+                : "pointer-events-none opacity-0"
+            }`}
+            onClick={() => setIsMenuOpen(false)}
+          ></div>
+          <div
+            className={`w-48 h-[calc(100vh-64px)] overflow-y-auto absolute top-[64px] px-2 py-3 sm:px-3  border-dark-border bg-dark/90 backdrop-blur-sm z-50 border-r border-t duration-300 ${
+              isMenuOpen ? "left-0" : "left-[-200px]"
+            }`}
+          >
+            <a
+              href="#home"
+              className="block px-3 py-2 text-gray-300 hover:text-indigo-400 border-b border-dark-border"
+              aria-label="Home"
+            >
+              Home
+            </a>
+            <a
+              href="#about"
+              className="block px-3 py-2 text-gray-300 hover:text-indigo-400 border-b border-dark-border"
+              aria-label="About"
+            >
+              About
+            </a>
+            <a
+              href="#projects"
+              className="block px-3 py-2 text-gray-300 hover:text-indigo-400 border-b border-dark-border"
+              aria-label="Projects"
+            >
+              Projects
+            </a>
+            <a
+              href="#contact"
+              className="block px-3 py-2 text-gray-300 hover:text-indigo-400"
+              aria-label="Contact"
+            >
+              Contact
+            </a>
           </div>
-        )}
+        </div>
+        {/* )} */}
       </nav>
 
       {/* Hero Section */}
@@ -139,12 +177,10 @@ function App() {
 
         <div className="relative">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 lg:pt-32 lg:pb-28">
-            <div className="text-center">
+            <div className="text-center" data-aos="fade-up">
               <h1 className="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl">
                 <span className="block">Crafting Digital</span>
-                <span className="block text-indigo-400">
-                  Moments that Matter
-                </span>
+                <span className="text-indigo-400" ref={el}></span>
               </h1>
               <p className="mt-3 max-w-md mx-auto text-base text-gray-400 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
                 We transform ideas into immersive digital experiences through
@@ -154,7 +190,7 @@ function App() {
                 <div className="rounded-md shadow">
                   <a
                     href="#contact"
-                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white gradient-bg hover:opacity-90 md:py-4 md:text-lg md:px-10"
+                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white gradient-bg hover:opacity-90 md:py-4 md:text-lg md:px-10 duration-300"
                     aria-label="Contact"
                   >
                     Start Your Journey
@@ -171,7 +207,7 @@ function App() {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 bg-dark-lighter">
+      <section className="py-20 bg-dark-lighter relative z-1">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
@@ -206,13 +242,13 @@ function App() {
             ].map((service, index) => (
               <div
                 key={index}
-                className="bg-dark rounded-lg border border-dark-border overflow-hidden hover:border-indigo-500 transition"
+                className="bg-dark rounded-lg border border-dark-border overflow-hidden hover:border-indigo-500 duration-300"
               >
                 <div className="h-48 w-full overflow-hidden">
                   <img
                     src={service.image}
                     alt={service.title}
-                    className="w-full h-full object-cover transform hover:scale-105 transition"
+                    className="w-full h-full object-cover transform hover:scale-105 duration-300"
                   />
                 </div>
                 <div className="p-6">
@@ -261,7 +297,7 @@ function App() {
                 ))}
               </div>
             </div>
-            <div className="mt-10 lg:mt-0">
+            <div className="mt-10 lg:mt-0 relative">
               <img
                 className="rounded-lg border border-dark-border"
                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800"
@@ -273,7 +309,7 @@ function App() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 bg-dark-lighter">
+      <section id="projects" className="py-20 bg-dark-lighter relative z-1">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
@@ -307,7 +343,7 @@ function App() {
             ].map((project, index) => (
               <div
                 key={index}
-                className="bg-dark rounded-lg border border-dark-border overflow-hidden hover:border-indigo-500 transition"
+                className="bg-dark rounded-lg border border-dark-border overflow-hidden hover:border-indigo-500 duration-300"
               >
                 <div className="h-48 w-full overflow-hidden">
                   <img
@@ -342,7 +378,11 @@ function App() {
 
           <div className="mt-20 grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div>
-              <form className="space-y-6">
+              <form
+                className="space-y-6 relative"
+                action="https://formspree.io/f/mqaerawy"
+                method="POST"
+              >
                 <div>
                   <label
                     htmlFor="name"
@@ -353,7 +393,7 @@ function App() {
                   <input
                     type="text"
                     id="name"
-                    className="mt-1 block w-full rounded-md shadow-sm"
+                    className="mt-1 p-2 block w-full rounded-md shadow-sm outline-0"
                   />
                 </div>
                 <div>
@@ -366,7 +406,7 @@ function App() {
                   <input
                     type="email"
                     id="email"
-                    className="mt-1 block w-full rounded-md shadow-sm"
+                    className="mt-1 p-2 block w-full rounded-md shadow-sm outline-0"
                   />
                 </div>
                 <div>
@@ -379,13 +419,13 @@ function App() {
                   <textarea
                     id="message"
                     rows={4}
-                    className="mt-1 block w-full rounded-md shadow-sm"
+                    className="mt-1 p-2 block w-full rounded-md shadow-sm outline-0"
                   ></textarea>
                 </div>
                 <div>
                   <button
                     type="submit"
-                    className="w-full flex justify-center py-3 px-4 rounded-md shadow-sm text-sm font-medium text-white gradient-bg hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    className="w-full flex justify-center py-3 px-4 rounded-md shadow-sm text-sm font-medium text-white gradient-bg hover:opacity-90 duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     aria-label="Send Message"
                   >
                     Send Message
@@ -412,28 +452,28 @@ function App() {
               <div className="flex space-x-6">
                 <a
                   href="#"
-                  className="text-gray-400 hover:text-indigo-400"
+                  className="text-gray-400 hover:text-indigo-400 duration-300"
                   aria-label="Facebook"
                 >
                   <Facebook className="h-6 w-6" />
                 </a>
                 <a
                   href="#"
-                  className="text-gray-400 hover:text-indigo-400"
+                  className="text-gray-400 hover:text-indigo-400 duration-300"
                   aria-label="Twitter"
                 >
                   <Twitter className="h-6 w-6" />
                 </a>
                 <a
                   href="#"
-                  className="text-gray-400 hover:text-indigo-400"
+                  className="text-gray-400 hover:text-indigo-400 duration-300"
                   aria-label="Instagram"
                 >
                   <Instagram className="h-6 w-6" />
                 </a>
                 <a
                   href="#"
-                  className="text-gray-400 hover:text-indigo-400"
+                  className="text-gray-400 hover:text-indigo-400 duration-300"
                   aria-label="Linkedin"
                 >
                   <Linkedin className="h-6 w-6" />
@@ -445,7 +485,7 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-dark-lighter border-t border-dark-border">
+      <footer className="bg-dark-lighter border-t border-dark-border relative z-1">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
             <div className="text-2xl font-bold text-indigo-400 flex gap-2">
@@ -455,28 +495,28 @@ function App() {
             <div className="flex space-x-6">
               <a
                 href="#"
-                className="text-gray-400 hover:text-indigo-400"
+                className="text-gray-400 hover:text-indigo-400 duration-300"
                 aria-label="Facebook"
               >
                 <Facebook className="h-6 w-6" />
               </a>
               <a
                 href="#"
-                className="text-gray-400 hover:text-indigo-400"
+                className="text-gray-400 hover:text-indigo-400 duration-300"
                 aria-label="Twitter"
               >
                 <Twitter className="h-6 w-6" />
               </a>
               <a
                 href="#"
-                className="text-gray-400 hover:text-indigo-400"
+                className="text-gray-400 hover:text-indigo-400 duration-300"
                 aria-label="Instagram"
               >
                 <Instagram className="h-6 w-6" />
               </a>
               <a
                 href="#"
-                className="text-gray-400 hover:text-indigo-400"
+                className="text-gray-400 hover:text-indigo-400 duration-300"
                 aria-label="Linkedin"
               >
                 <Linkedin className="h-6 w-6" />
