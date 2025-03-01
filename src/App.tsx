@@ -120,6 +120,7 @@ function App() {
               href="#home"
               className="block px-3 py-2 text-gray-300 hover:text-indigo-400 border-b border-dark-border"
               aria-label="Home"
+              onClick={() => setIsMenuOpen(false)}
             >
               Home
             </a>
@@ -127,6 +128,7 @@ function App() {
               href="#about"
               className="block px-3 py-2 text-gray-300 hover:text-indigo-400 border-b border-dark-border"
               aria-label="About"
+              onClick={() => setIsMenuOpen(false)}
             >
               About
             </a>
@@ -134,6 +136,7 @@ function App() {
               href="#projects"
               className="block px-3 py-2 text-gray-300 hover:text-indigo-400 border-b border-dark-border"
               aria-label="Projects"
+              onClick={() => setIsMenuOpen(false)}
             >
               Projects
             </a>
@@ -141,6 +144,7 @@ function App() {
               href="#contact"
               className="block px-3 py-2 text-gray-300 hover:text-indigo-400"
               aria-label="Contact"
+              onClick={() => setIsMenuOpen(false)}
             >
               Contact
             </a>
