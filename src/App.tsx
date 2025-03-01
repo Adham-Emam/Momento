@@ -154,17 +154,8 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <section
-        id="home"
-        className="relative h-screen pt-20 lg:pt-28 overflow-hidden"
-      >
-        {/* Decorative shapes */}
-        {/* <div className="hero-shape-1"></div>
-        <div className="hero-shape-2"></div>
-        <div className="hero-shape-3"></div>
-        <div className="absolute inset-0 hero-grid"></div>
-        <div className="absolute inset-0 hero-lines"></div> */}
-        <div className="area">
+      <section id="home" className="relative pt-20 lg:pt-28 overflow-hidden">
+        <div className="fixed top-0 left-0 w-full h-screen pointer-events-none z-5">
           <ul className="circles">
             <li></li>
             <li></li>
@@ -178,6 +169,7 @@ function App() {
             <li></li>
           </ul>
         </div>
+        <div className="fixed top-0 left-0 w-full h-screen bg-dark/10 backdrop-blur-sm z-1"></div>
 
         <div className="relative">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 lg:pt-32 lg:pb-28">
@@ -211,7 +203,7 @@ function App() {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 bg-dark-lighter relative z-1">
+      <section className="py-20 bg-dark-lighter/90 relative z-10 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
@@ -268,7 +260,7 @@ function App() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20">
+      <section id="about" className="py-20 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
             <div>
@@ -313,7 +305,10 @@ function App() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 bg-dark-lighter relative z-1">
+      <section
+        id="projects"
+        className="py-20 bg-dark-lighter/90 relative z-10 backdrop-blur-sm"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
@@ -369,7 +364,7 @@ function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20">
+      <section id="contact" className="py-20 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
@@ -397,7 +392,7 @@ function App() {
                   <input
                     type="text"
                     id="name"
-                    className="mt-1 p-2 block w-full rounded-md shadow-sm outline-0"
+                    className="mt-1 p-2 block w-full rounded-md shadow-sm outline-0 bg-dark-lighter/50 backdrop-blur-sm border border-dark-border hover:border-indigo-500 duration-300"
                   />
                 </div>
                 <div>
@@ -410,7 +405,7 @@ function App() {
                   <input
                     type="email"
                     id="email"
-                    className="mt-1 p-2 block w-full rounded-md shadow-sm outline-0"
+                    className="mt-1 p-2 block w-full rounded-md shadow-sm outline-0 bg-dark-lighter/50 backdrop-blur-sm border border-dark-border hover:border-indigo-500 duration-300"
                   />
                 </div>
                 <div>
@@ -423,13 +418,14 @@ function App() {
                   <textarea
                     id="message"
                     rows={4}
-                    className="mt-1 p-2 block w-full rounded-md shadow-sm outline-0"
-                  ></textarea>
+                    className="mt-1 p-2 block w-full rounded-md shadow-sm outline-0 bg-dark-lighter/50 backdrop-blur-sm border border-dark-border hover:border-indigo-500 duration-300"
+                  />
                 </div>
                 <div>
                   <button
                     type="submit"
-                    className="w-full flex justify-center py-3 px-4 rounded-md shadow-sm text-sm font-medium text-white gradient-bg hover:opacity-90 duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    className="w-full flex justify-center py-3 px-4 rounded-md shadow-sm text-sm font-medium text-white
+                    backdrop-blur-sm gradient-bg hover:opacity-90 duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     aria-label="Send Message"
                   >
                     Send Message
@@ -489,7 +485,7 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-dark-lighter border-t border-dark-border relative z-1">
+      <footer className="bg-dark-lighter/90 backdrop-blur-sm border-t border-dark-border relative z-10">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
             <div className="text-2xl font-bold text-indigo-400 flex gap-2">
